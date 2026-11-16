@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kairan Sun</title>
+<meta name="description" content="Kairan Sun builds LLM agents at the intersection of software engineering and security, NTU Singapore.">
+<meta property="og:title" content="Kairan Sun">
+<meta property="og:description" content="Building AI agents · Singapore">
+<meta property="og:image" content="https://kairanskrr.github.io/assets/img/portrait.jpg">
+<link rel="icon" href="assets/img/kk.jpg"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Single column, photo-led intro, projects as large image tiles. Inter only. */
+:root{
+  --bg:#ffffff; --ink:#0f1115; --muted:#6b7280; --line:#e5e7eb; --acc:#2f5bea; --tile:#f3f4f6; --card:#ffffff;
+  --rb:#ff8f8f,#ffbf6b,#ffe27a,#8fd9a0,#7cc4ff,#a99bff,#e8a0f0;
+  --font:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1013; --ink:#eef0f3; --muted:#9097a3; --line:#262931; --acc:#7c9cff; --tile:#1a1c21; --card:#16181d; color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1013; --ink:#eef0f3; --muted:#9097a3; --line:#262931; --acc:#7c9cff; --tile:#1a1c21; --card:#16181d; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.6 var(--font);-webkit-font-smoothing:antialiased;background-image:linear-gradient(90deg,var(--rb));background-size:100% 3px;background-repeat:no-repeat}
+::selection{background:#ffe27a;color:#0f1115}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:6px}
+img{display:block;max-width:100%}
+
+.mock{border-radius:12px;overflow:hidden;background:var(--card);border:1px solid var(--line);font-size:12px;line-height:1.45}
+.mbar{display:flex;align-items:center;gap:6px;padding:8px 10px;border-bottom:1px solid var(--line)}
+.mbar i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.mbar span{margin-left:8px;color:var(--muted);font-size:11px}
+.mbody{display:grid;grid-template-columns:1.25fr 1fr}
+.doc{padding:14px;display:flex;flex-direction:column;gap:7px;border-right:1px solid var(--line)}
+.doc b{font-weight:600;font-size:12px}
+.ln{height:6px;border-radius:3px;background:var(--line)}
+.ln.hl{background:var(--acc);opacity:.35}
+.chat{padding:12px;display:flex;flex-direction:column;gap:8px;justify-content:flex-end}
+.msg{padding:7px 9px;border-radius:10px;max-width:95%}
+.msg.u{align-self:flex-end;background:var(--acc);color:#fff}
+.msg.a{background:var(--tile)}
+.shot{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center;border-radius:10px;border:1px solid var(--line);box-shadow:0 8px 24px rgba(15,17,21,.08)}
+.diagbox{background:#fff;border-radius:12px;padding:10px}
+.diagbox img{width:100%;height:auto;border-radius:6px}
+
+.wrap{max-width:960px;margin:0 auto;padding-block:64px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:88px}
+.hero{display:flex;gap:40px;align-items:center}
+.portrait{flex:none;width:180px;aspect-ratio:4/5;max-width:100%;border-radius:16px;background:url(assets/img/portrait.jpg) center/cover;border:1px solid var(--line)}
+.hero .txt{min-width:0}
+.eyebrow{margin:0 0 10px;font-size:14px;color:var(--muted)}
+h1{margin:0 0 16px;font-size:clamp(36px,5.5vw,56px);line-height:1;font-weight:700;letter-spacing:-.04em}
+.lede{margin:0 0 22px;font-size:16px;line-height:1.65;max-width:64ch}
+.links{display:flex;gap:10px;flex-wrap:wrap}
+.links a{text-decoration:none;font-size:14px;font-weight:500;padding:9px 16px;border-radius:12px;background:var(--tile)}
+.links a:hover{background:var(--line) linear-gradient(90deg,var(--rb)) left bottom/100% 2px no-repeat}
+h2{margin:0 0 24px;font-size:26px;font-weight:600;letter-spacing:-.02em}
+.work{display:grid;grid-template-columns:1fr;gap:56px}
+.work article{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:40px;align-items:center}
+.work article:nth-child(odd) .tile{order:2}
+.work article:nth-child(even){grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
+.work article{min-width:0}
+.tile{display:flex;align-items:center;justify-content:center;max-width:100%}
+.tile>*{width:100%}
+.work h3{margin:0 0 8px;font-size:19px;font-weight:600}
+.yr{font-size:13px;color:var(--muted);margin:0 0 8px}
+.work p{margin:0;color:var(--muted);max-width:68ch}
+ul{list-style:none;margin:0;padding:0}
+.pubs li{display:grid;grid-template-columns:120px 1fr;gap:24px;padding:18px 0;border-top:1px solid var(--line)}
+.pubs .v{font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
+.pubs b{display:block;font-weight:500}
+.pubs span{font-size:13px;color:var(--muted)}
+.me{display:flex;align-items:center;gap:20px;padding-top:28px;border-top:1px solid var(--line)}
+.me img{width:96px;height:96px;object-fit:cover;object-position:50% 30%;border-radius:50%;padding:3px;background:conic-gradient(from 200deg,var(--rb),#ff8f8f)}
+.me p{margin:0;font-size:14px;color:var(--muted)}
+.me p b{display:block;color:var(--ink);font-weight:500;font-size:15px}
+@media (max-width:720px){
+  .wrap{gap:64px;padding-block:36px 48px}
+  .hero{flex-direction:column;align-items:flex-start;gap:24px}
+  .portrait{width:128px}
+  .work article,.work article:nth-child(even){grid-template-columns:1fr;gap:16px}
+  .work article:nth-child(odd) .tile{order:0}
+  .tile{aspect-ratio:auto;padding:16px}
+  .pubs li{grid-template-columns:1fr;gap:2px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="portrait" role="img" aria-label="Photo of Kairan Sun"></div>
+    <div class="txt">
+      <p class="eyebrow">Building AI agents · Singapore</p>
+      <h1>Kairan Sun</h1>
+      <p class="lede">Hi, Kairan here! 🌱 I work at the intersection of LLM agents, software engineering, and security at NTU Singapore. I’m curious about how we can build agents that people can understand, work with, and trust. My PhD research focuses on smart contract security and LLM-based agents for automated security analysis, and I also build agent systems for research and writing. I enjoy turning ideas into working software and figuring out what happens when things don’t go as planned. Feel free to say hello if you’d like to exchange ideas or build something together.</p>
+      <div class="links"><a href="https://github.com/kairanskrr">GitHub</a><a href="https://scholar.google.com/citations?user=kOnkhlgAAAAJ">Google Scholar</a><a href="https://linkedin.com/in/kairan-sun">LinkedIn</a></div>
+    </div>
+  </header>
+
+  <section>
+    <h2>Projects</h2>
+    <div class="work">
+      <article><div class="tile"><img class="shot" src="assets/img/xept.jpg" loading="lazy" alt="Xept editor: LaTeX source, compiled PDF preview and the Paper Agent panel"></div><div class="info"><h3>Xept</h3>
+        <p>An AI agent that helps researchers write papers, on web and desktop. Prototype to production, with about 50 tools for editing, LaTeX and citation checks. Built with two collaborators.</p></div></article>
+      <article><div class="tile"><img class="shot" src="assets/img/auto-research.jpg" loading="lazy" alt="Auto Research lab view: a lead agent and worker agents at their desks, with plan progress on the board"></div><div class="info"><h3>Auto Research</h3>
+        <p>A team of agents that turns a research question into a checked research package, with 32 rules enforced in code. Built with two collaborators.</p></div></article>
+    </div>
+  </section>
+
+  <section>
+    <h2>Publications</h2>
+    <ul class="pubs"><li><span class='v'>ASE 2025</span><div><b>FaultSeeker: LLM-Empowered Framework for Blockchain Transaction Fault Localization</b><span>First author</span></div></li><li><span class='v'>ASE 2025</span><div><b>Learning from the Past: Real-World Exploit Migration for Smart Contract PoC Generation</b><span>First author</span></div></li><li><span class='v'>IEEE TSE 2025</span><div><b>ACFix: Guiding LLMs with Mined Common RBAC Practices for Context-Aware Repair of Access Control Vulnerabilities in Smart Contracts</b></div></li><li><span class='v'>FSE 2024</span><div><b>Static Application Security Testing (SAST) Tools for Smart Contracts: How Far Are We?</b><span>ACM SIGSOFT Distinguished Paper Award</span></div></li><li><span class='v'>ESEC/FSE 2023</span><div><b>Demystifying the Composition and Code Reuse in Solidity Smart Contracts</b><span>First author</span></div></li><li><span class='v'>ICSE 2023</span><div><b>OSSFP: Precise and Scalable C/C++ Third-Party Library Detection Using Fingerprinting Functions</b></div></li></ul>
+  </section>
+
+  <footer class="me">
+    <img src="assets/img/kk.jpg" loading="lazy" alt="Illustrated portrait of Kairan Sun with headphones">
+    <p><b>Thanks for stopping by.</b>© 2026 Kairan Sun</p>
+  </footer>
+</div>
+</body>
+</html>
